@@ -16,7 +16,7 @@ async def bot_started(event):
 @lightbulb.command('ping', 'Says pong!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    await ctx.respond('Pong!')
+    await ctx.respond('~Pong!')
 
 bot.run()
 
