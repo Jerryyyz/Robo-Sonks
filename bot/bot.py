@@ -5,7 +5,7 @@ quotes = list(open('quotes.txt'))
 spam = True
 
 bot = lightbulb.BotApp(
-    token=open("token.txt", "r").read(),
+    token=open("../secret/token.txt", "r").read(),
     default_enabled_guilds=(869036831382048819, 690112790693675040)
 )
 
