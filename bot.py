@@ -1,5 +1,7 @@
 import hikari
 import lightbulb
+import random
+quotes = list(open('quotes.txt'))
 
 bot = lightbulb.BotApp(
     token='MTAyOTA3OTc2MTU1NDc4NDI4Ng.GpCXwE.c5Z8OxUpJbKA-pZNdM3EbM2XQhJ-bcLKoHFLKg',
@@ -16,7 +18,8 @@ async def bot_started(event):
 @lightbulb.command('kcd', 'Hear a famous Sonks quote')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    await ctx.respond('TA MALLIA MOU')
+    await ctx.respond(random.choice(quotes))
+
 
 bot.run()
 
