@@ -46,9 +46,9 @@ async def theme(ctx: lightbulb.Context) -> None:
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def reply(event) -> None:
     if spam:
-        if 'SONKS KCD' in event.content.upper():
+        if event.content.upper() == 'KCD':
             await event.message.respond("That's my fucking job", reply=True)
-        elif 'TERUMI 6C' in event.content.upper():
+        elif event.content.upper() == '6C':
             await event.message.respond(
                 'https://cdn.discordapp.com/attachments/556756134367592481/1028413028510740561/monke_2-1.mp4',
                 reply=True
