@@ -5,7 +5,7 @@ quotes = list(open('quotes.txt'))
 spam = True
 
 bot = lightbulb.BotApp(
-    token='MTAyOTA3OTc2MTU1NDc4NDI4Ng.GpCXwE.c5Z8OxUpJbKA-pZNdM3EbM2XQhJ-bcLKoHFLKg',
+    token=open("token.txt", "r").read(),
     default_enabled_guilds=(869036831382048819, 690112790693675040)
 )
 
@@ -36,9 +36,9 @@ async def shutup(ctx: lightbulb.Context) -> None:
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def reply(event) -> None:
     if spam:
-        if "KCD" in event.content.upper():
+        if "SONKS KCD" in event.content.upper():
             await event.message.respond("That's my fucking job", reply=True)
-        elif "6C" in event.content.upper():
+        elif "TERUMI 6C" in event.content.upper():
             await event.message.respond(
                 "https://cdn.discordapp.com/attachments/556756134367592481/1028413028510740561/monke_2-1.mp4", reply=True
             )
