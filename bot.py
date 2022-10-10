@@ -33,14 +33,25 @@ async def shutup(ctx: lightbulb.Context) -> None:
     bot.spam = not bot.spam
 
 
+@bot.command
+@lightbulb.command("main-theme", 'You can listen to my main theme')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def theme(ctx: lightbulb.Context) -> None:
+    await ctx.respond(
+        'https://cdn.discordapp.com/attachments/869038172863070289/1029146352166391861/ezgif.com-gif-maker.mp4',
+        reply=True
+    )
+
+
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def reply(event) -> None:
     if spam:
-        if "SONKS KCD" in event.content.upper():
+        if 'SONKS KCD' in event.content.upper():
             await event.message.respond("That's my fucking job", reply=True)
-        elif "TERUMI 6C" in event.content.upper():
+        elif 'TERUMI 6C' in event.content.upper():
             await event.message.respond(
-                "https://cdn.discordapp.com/attachments/556756134367592481/1028413028510740561/monke_2-1.mp4", reply=True
+                'https://cdn.discordapp.com/attachments/556756134367592481/1028413028510740561/monke_2-1.mp4',
+                reply=True
             )
 
 
