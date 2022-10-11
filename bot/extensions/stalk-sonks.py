@@ -11,7 +11,8 @@ def load(bot):
 
 
 sonks_replies = ['I will live on forever in your nightmares', 'You are the inferior version of me',
-                 'You KCD even out of the game', 'Kokonoe feet are not real', 'Dual Blades are cringe']
+                 'You KCD even out of the game', 'Kokonoe feet are not real', 'Dual Blades are cringe',
+                 'I am the bone of my sword']
 
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
