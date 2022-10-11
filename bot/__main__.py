@@ -2,12 +2,10 @@ import os
 
 import hikari
 import lightbulb
-import random
+import aiohttp
 
 from bot import GUILD_ID
 
-quotes = list(open(os.path.join(os.path.dirname(__file__), "quotes.txt")))
-spam = True
 
 bot = lightbulb.BotApp(
     help_slash_command=True,
@@ -16,12 +14,24 @@ bot = lightbulb.BotApp(
     default_enabled_guilds=GUILD_ID
 )
 
+bot.d.spam = True
+
 bot.load_extensions_from('extensions')
+
+
+def get_spam():
+    return bot.d.spam
 
 
 @bot.listen(hikari.StartedEvent)
 async def on_started(event: hikari.StartingEvent) -> None:
     print('Robo-Sonks has started')
+    bot.d.aio_session = aiohttp.ClientSession()
+
+
+@bot.listen()
+async def on_stopping(event: hikari.StoppingEvent) -> None:
+    await bot.d.aio_session.close()
 
 if __name__ == "__main__":
     if os.name != "nt":
@@ -30,36 +40,4 @@ if __name__ == "__main__":
 
     bot.run()
 
-
-@bot.command
-@lightbulb.command('kcd', 'Hear a famous Sonks quote')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def kcd(ctx: lightbulb.Context) -> None:
-    await ctx.respond(random.choice(quotes))
-
-
-@bot.command
-@lightbulb.command('shutthefuckup', 'I will shut the fuck up')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def shutup(ctx: lightbulb.Context) -> None:
-    if bot.spam:
-        await ctx.respond('I will shut my trap')
-    else:
-        await ctx.respond('Prepare yourself, mortal')
-    bot.spam = not bot.spam
-
-
-@bot.listen(hikari.GuildMessageCreateEvent)
-async def reply(event) -> None:
-    if spam:
-        if event.content.upper() == 'KCD':
-            await event.message.respond("That's my fucking job", reply=True)
-        elif event.content.upper() == '6C':
-            await event.message.respond(
-                'https://cdn.discordapp.com/attachments/556756134367592481/1028413028510740561/monke_2-1.mp4',
-                reply=True
-            )
-
-
-bot.run()
 
