@@ -16,8 +16,10 @@ def load(bot):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def kcd(ctx: lightbulb.Context) -> None:
     if ctx.author.id == 285092149144453121:
+        print(f'Quote was added')
         with open(os.path.join(os.path.dirname(__file__), '..', "quotes.txt"), 'a') as f:
             f.write(f"\n{ctx.options.quote}")
-        ctx.respond("Quote added")
+        await ctx.respond("Quote added")
     else:
+        print(f'User:{ctx.author.username} tried to add quote')
         await ctx.respond('Only the author can use this command', flags=hikari.MessageFlag.EPHEMERAL)

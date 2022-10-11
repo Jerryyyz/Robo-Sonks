@@ -13,8 +13,10 @@ def load(bot):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def shutup(ctx: lightbulb.Context) -> None:
     if ctx.bot.d.spam:
+        print(f'{ctx.author.username} made me shut up')
         await ctx.respond('I will shut my trap')
     else:
+        print(f'{ctx.author.username} let me reply again')
         await ctx.respond('Prepare yourself, mortal')
     ctx.bot.d.spam = not ctx.bot.d.spam
 
