@@ -12,6 +12,8 @@ def load(bot):
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def reply(event: lightbulb.events) -> None:
+    if not event.is_human:
+        return
     if get_message_reply():
         if event.content.upper() == 'KCD':
             await event.message.respond("That's my fucking job", reply=True)
