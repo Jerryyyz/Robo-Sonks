@@ -24,6 +24,8 @@ async def reply(event: lightbulb.events) -> None:
     if not event.is_human:
         return
     if 'KCD' in event.content.upper():
+        print(f'Reacted to message sent by {event.message.author} with KCD emojis')
         await event.message.add_reaction(random.choice(kcd_emojis))
     elif '6C' in event.content.upper():
+        print(f'Reacted to message sent by {event.message.author} with monkey emojis')
         await event.message.add_reaction(random.choice(monkey_emojis))
