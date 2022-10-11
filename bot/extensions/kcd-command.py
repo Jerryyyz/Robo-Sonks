@@ -14,7 +14,7 @@ def load(bot):
 
 
 @plugin.command
-@lightbulb.option('number', 'number of quote', type=int, required=False, default=0)
+@lightbulb.option('number', 'Number of Sonks quote', type=int, required=False, default=0)
 @lightbulb.command('kcd', 'Hear a famous Sonks quote')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def kcd(ctx: lightbulb.Context) -> None:
