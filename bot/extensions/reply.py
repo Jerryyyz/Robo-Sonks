@@ -17,7 +17,7 @@ async def reply(event: lightbulb.events) -> None:
     if get_message_reply():
         if event.content.upper() == 'KCD':
             print(f'Replied to KCD message sent by {event.message.author.username}')
-            await event.message.respond("That's my fucking job", reply=True)
+            await event.message.respond("Who has called upon my name", reply=True)
         elif event.content.upper() == '6C':
             print(f'Replied to 6C message sent by {event.message.author.username}')
             await event.message.respond(
