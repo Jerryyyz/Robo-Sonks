@@ -21,6 +21,8 @@ monkey_emojis = [hikari.Emoji.parse('<a:monke:1029393246218100876>'),
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def reply(event: lightbulb.events) -> None:
+    if not event.is_human:
+        return
     if 'KCD' in event.content.upper():
         await event.message.add_reaction(random.choice(kcd_emojis))
     elif '6C' in event.content.upper():
