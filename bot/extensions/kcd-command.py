@@ -4,8 +4,6 @@ import lightbulb
 import os
 import random
 
-quotes = list(open(os.path.join(os.path.dirname(__file__),'..', "quotes.txt")))
-
 plugin = lightbulb.Plugin('kcd')
 
 
@@ -18,6 +16,7 @@ def load(bot):
 @lightbulb.command('kcd', 'Hear a famous Sonks quote')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def kcd(ctx: lightbulb.Context) -> None:
+    quotes = list(open(os.path.join(os.path.dirname(__file__), '..', "quotes.txt")))
     if ctx.options.number == 0:
         await ctx.respond(random.choice(quotes))
     elif ctx.options.number < 1 or ctx.options.number > len(quotes):
