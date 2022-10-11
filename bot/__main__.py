@@ -14,11 +14,11 @@ bot = lightbulb.BotApp(
     default_enabled_guilds=GUILD_ID
 )
 
-bot.d.spam = False
+bot.d.message_reply = True
 
 
-def get_spam():
-    return bot.d.spam
+def get_message_reply():
+    return bot.d.message_reply
 
 
 bot.load_extensions_from('extensions')

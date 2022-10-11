@@ -1,7 +1,7 @@
 import hikari
 import lightbulb
 
-from __main__ import get_spam
+from __main__ import get_message_reply
 
 plugin = lightbulb.Plugin('reply')
 
@@ -12,7 +12,7 @@ def load(bot):
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def reply(event: lightbulb.events) -> None:
-    if get_spam():
+    if get_message_reply():
         if event.content.upper() == 'KCD':
             await event.message.respond("That's my fucking job", reply=True)
         elif event.content.upper() == '6C':
