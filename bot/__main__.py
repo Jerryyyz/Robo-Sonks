@@ -14,13 +14,14 @@ bot = lightbulb.BotApp(
     default_enabled_guilds=GUILD_ID
 )
 
-bot.d.spam = True
-
-bot.load_extensions_from('extensions')
+bot.d.spam = False
 
 
 def get_spam():
     return bot.d.spam
+
+
+bot.load_extensions_from('extensions')
 
 
 @bot.listen(hikari.StartedEvent)
