@@ -1,18 +1,34 @@
+import os
+
 import hikari
 import lightbulb
 import random
-quotes = list(open('quotes.txt'))
+
+from bot import GUILD_ID
+
+quotes = list(open(os.path.join(os.path.dirname(__file__), "quotes.txt")))
 spam = True
 
 bot = lightbulb.BotApp(
-    token=open("../secret/token.txt", "r").read(),
-    default_enabled_guilds=(869036831382048819, 690112790693675040)
+    help_slash_command=True,
+    token=open(os.path.join(os.path.dirname(__file__), '..', 'secret', 'token.txt')).read(),
+    # intents=hikari.
+    default_enabled_guilds=GUILD_ID
 )
+
+bot.load_extensions_from('extensions')
 
 
 @bot.listen(hikari.StartedEvent)
-async def bot_started(event) -> None:
+async def on_started(event: hikari.StartingEvent) -> None:
     print('Robo-Sonks has started')
+
+if __name__ == "__main__":
+    if os.name != "nt":
+        import uvloop
+        uvloop.install()
+
+    bot.run()
 
 
 @bot.command
@@ -31,16 +47,6 @@ async def shutup(ctx: lightbulb.Context) -> None:
     else:
         await ctx.respond('Prepare yourself, mortal')
     bot.spam = not bot.spam
-
-
-@bot.command
-@lightbulb.command("main-theme", 'You can listen to my main theme')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def theme(ctx: lightbulb.Context) -> None:
-    await ctx.respond(
-        'https://cdn.discordapp.com/attachments/869038172863070289/1029146352166391861/ezgif.com-gif-maker.mp4',
-        reply=True
-    )
 
 
 @bot.listen(hikari.GuildMessageCreateEvent)
