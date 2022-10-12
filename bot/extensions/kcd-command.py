@@ -11,7 +11,6 @@ def load(bot):
     bot.add_plugin(plugin)
 
 
-
 @plugin.command
 @lightbulb.option('number', f'Number of Sonks quote. There are {len(list(open(os.path.join(os.path.dirname(__file__), "..", "quotes.txt"))))} quotes', type=int, required=False, default=0)
 @lightbulb.command('kcd', 'Hear a famous Sonks quote')
