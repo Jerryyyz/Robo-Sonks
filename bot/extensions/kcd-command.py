@@ -25,4 +25,4 @@ async def kcd(ctx: lightbulb.Context) -> None:
         await ctx.respond('This quote number does not exist', flags=hikari.MessageFlag.EPHEMERAL)
     else:
         print(f'Send a specific quote for user:{ctx.author.username}')
-        await ctx.respond(quotes[int(ctx.options.number)])
+        await ctx.respond(quotes[int(ctx.options.number)-1])
