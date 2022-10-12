@@ -9,7 +9,7 @@ from __init__ import GUILD_ID
 
 bot = lightbulb.BotApp(
     help_slash_command=True,
-    token=open(os.path.join(os.path.dirname(__file__), '..', 'secret', 'token.txt')).read(),
+    token=open(os.path.join(os.path.dirname(__file__), '..', 'secret', 'token.txt')).read().strip(),
     # intents=hikari.
     default_enabled_guilds=GUILD_ID
 )
