@@ -12,8 +12,8 @@ def load(bot):
 
 
 @plugin.command
-@lightbulb.option('number', f'Number of Sonks quote. There are {len(list(open(os.path.join(os.path.dirname(__file__), "..", "quotes.txt"))))} quotes', type=int, required=False, default=0)
-@lightbulb.command('kcd', 'Hear a famous Sonks quote')
+@lightbulb.option('number', f'Number of Sonks quote.', type=int, required=False, default=0)
+@lightbulb.command('kcd', f'Hear a famous Sonks quote. There are {len(list(open(os.path.join(os.path.dirname(__file__), "..", "quotes.txt"))))} quotes')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def kcd(ctx: lightbulb.Context) -> None:
     quotes = list(open(os.path.join(os.path.dirname(__file__), '..', "quotes.txt")))
