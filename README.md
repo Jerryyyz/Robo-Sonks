@@ -13,7 +13,7 @@ Robo-Sonks can do the following:
 * **Reply** to messages that only include **6C** and **KCD** in a message with according messages
 * **kcd** command that gives you a world-renowned Sonks quote, either randomly or specified quote
 * **main-theme** command sends you Robo-Sonks' main theme
-* **shutthefuckup** is so the message replies dont happen
+* **shutthefuckup** toggle for the message replies
 * **add-quote** is for the author to add quotes to the list
 * *Secret function...*
 
