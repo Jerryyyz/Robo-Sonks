@@ -4,7 +4,7 @@ import hikari
 import lightbulb
 import aiohttp
 
-from bot import GUILD_ID
+from __init__ import GUILD_ID
 
 
 bot = lightbulb.BotApp(
