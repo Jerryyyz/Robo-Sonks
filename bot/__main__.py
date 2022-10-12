@@ -36,10 +36,6 @@ async def on_stopping(event: hikari.StoppingEvent) -> None:
     await bot.d.aio_session.close()
 
 if __name__ == "__main__":
-    if os.name != "nt":
-        import uvloop
-        uvloop.install()
-
     bot.run()
 
 
