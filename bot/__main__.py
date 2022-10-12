@@ -33,7 +33,7 @@ async def on_started(event: hikari.StartingEvent) -> None:
 @bot.listen()
 async def on_stopping(event: hikari.StoppingEvent) -> None:
     print('Robo-Sonks is closing')
-    await bot.d.aio_session.close()
+    bot.d.aio_session.close()
 
 if __name__ == "__main__":
     bot.run()
