@@ -15,3 +15,8 @@ Robo-Sonks can do the following:
 * Main-theme command sends you Robo-Sonks' main theme
 * Shutthefuckup is so the message replies dont happen
 * Add-quote is for the author to add quotes to the list
+
+## Requirements
+You need to do the following in order for the bot to work properly:
+* Create a directory `secret`(\Robo-Sonks\secret\) and put the token in token.txt
+* Create a txt `quotes.txt` in the bot directory to put the quotes in
