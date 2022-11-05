@@ -12,12 +12,14 @@ def load(bot):
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def reply(event: lightbulb.events) -> None:
-    if not event.is_human:
+    if not event.is_human or event.content.upper() is None:
         return
     if get_message_reply():
+        # if the message is ONLY the KCD characters reply with a message
         if event.content.upper() == 'KCD':
             print(f'Replied to KCD message sent by {event.message.author.username}')
             await event.message.respond("Who has called upon my name", reply=True)
+        # if the message is only the 6C character reply with an embedded video
         elif event.content.upper() == '6C':
             print(f'Replied to 6C message sent by {event.message.author.username}')
             await event.message.respond(
