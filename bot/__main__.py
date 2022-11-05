@@ -40,5 +40,3 @@ async def on_stopping(event: hikari.StoppingEvent) -> None:
 
 if __name__ == "__main__":
     bot.run()
-
-
