@@ -9,7 +9,7 @@ Project was created with:
 
 ## How it works
 Robo-Sonks can do the following:
-* **React** with emojis to messages that include **6C** and **KCD** as strings in a message
+* **Randomly React** with emojis to messages that include **6C** and **KCD** as strings in a message
 * **Reply** to messages that only include **6C** and **KCD** in a message with according messages
 * **kcd** command that gives you a world-renowned Sonks quote, either randomly or specified quote
 * **main-theme** command sends you Robo-Sonks' main theme
