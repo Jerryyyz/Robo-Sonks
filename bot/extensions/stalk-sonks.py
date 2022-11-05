@@ -15,19 +15,22 @@ sonks_replies = ['I will live on forever in your nightmares', 'You are the infer
                  'I am the bone of my sword']
 
 
-@plugin.listener(hikari.GuildMessageCreateEvent)
-async def reply_sonks(event: lightbulb.events) -> None:
-    if event.message.author == 293397054116331521:
-        if random.random() < 0.02:
-            reply = random.choice(sonks_replies)
-            print(f'Replied to {event.message.author.username} with a  message: {reply}')
-
-            await event.message.respond(reply, reply=True, flags=hikari.MessageFlag.EPHEMERAL)
+# @plugin.listener(hikari.GuildMessageCreateEvent)
+# async def reply_sonks(event: lightbulb.events) -> None:
+#     if event.message.author.id == 293397054116331521:
+#         if random.random() < 0.50:
+#             reply = random.choice(sonks_replies)
+#             print(f'Replied to {event.message.author.username} with a  message: {reply}')
+#
+#             await event.message.respond(reply, reply=True, flags=hikari.MessageFlag.EPHEMERAL)
 
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def react_sonks(event: lightbulb.events) -> None:
-    if event.message.author == 293397054116331521:
+    if event.content.upper() is None:
+        return
+    # Checks if Sonks sent the message
+    if event.message.author.id == 293397054116331521:
         if random.random() < 0.06:
             print(f'Reacted to {event.message.author.username}s message')
             await event.message.add_reaction('🇰')

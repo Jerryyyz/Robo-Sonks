@@ -17,6 +17,7 @@ bot = lightbulb.BotApp(
 bot.d.message_reply = True
 
 
+# Save reply boolean in bot
 def get_message_reply():
     return bot.d.message_reply
 
@@ -24,12 +25,14 @@ def get_message_reply():
 bot.load_extensions_from('extensions')
 
 
+# Start the bot and aiohttp session
 @bot.listen(hikari.StartedEvent)
 async def on_started(event: hikari.StartingEvent) -> None:
     print('Robo-Sonks has started')
     bot.d.aio_session = aiohttp.ClientSession()
 
 
+# When the bot closes, close the aiohttp session
 @bot.listen()
 async def on_stopping(event: hikari.StoppingEvent) -> None:
     print('Robo-Sonks is closing')
@@ -37,5 +40,3 @@ async def on_stopping(event: hikari.StoppingEvent) -> None:
 
 if __name__ == "__main__":
     bot.run()
-
-

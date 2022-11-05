@@ -8,6 +8,7 @@ def load(bot):
     bot.add_plugin(plugin)
 
 
+# Command that posts a song with a mp4 embedded link
 @plugin.command
 @lightbulb.command("main-theme", 'You can listen to my main theme')
 @lightbulb.implements(lightbulb.SlashCommand)

@@ -8,6 +8,7 @@ def load(bot):
     bot.add_plugin(plugin)
 
 
+# Command that changes the boolean from true to false and vice versa
 @plugin.command
 @lightbulb.command('shutthefuckup', 'I will shut the fuck up')
 @lightbulb.implements(lightbulb.SlashCommand)
