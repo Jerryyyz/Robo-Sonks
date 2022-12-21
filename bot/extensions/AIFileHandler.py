@@ -1,3 +1,5 @@
+import shutil
+
 import hikari
 import lightbulb
 
@@ -28,6 +30,13 @@ async def upload(ctx: lightbulb.Context) -> None:
     if character not in characters:
         await ctx.respond("Character does not exist")
 
-    if filename.split(".")[1] is not "cbr":
+    if filename.split(".")[1] != "cbr":
         await ctx.respond("Wrong file extension")
 
+    with open(ctx.options.file.filename, "wb") as fp:  # Blocking, use executor
+        async with ctx.options.file.stream() as reader:
+            async for chunk in reader:
+                fp.write(chunk)
+
+    await ctx.respond('Your file has been upload, malaka')
+    shutil.move(ctx.options.file.filename, "../AIFiles/" + ctx.options.file.filename)
