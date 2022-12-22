@@ -1,4 +1,6 @@
 import shutil
+from os import listdir
+from os.path import isfile, join
 
 import hikari
 import lightbulb
@@ -38,5 +40,13 @@ async def upload(ctx: lightbulb.Context) -> None:
             async for chunk in reader:
                 fp.write(chunk)
 
-    await ctx.respond('Your file has been upload, malaka')
+    await ctx.respond('Your file has been upload')
     shutil.move(ctx.options.file.filename, "../AIFiles/" + ctx.options.file.filename)
+
+
+@plugin.command
+@lightbulb.option("aifile", "Get the AI file you want from the list", choices=[f for f in listdir("../AIFiles") if isfile(join("../AIFiles", f))])
+@lightbulb.command('request', 'Upload your AI file.')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def request(ctx: lightbulb.Context) -> None:
+    await ctx.respond(hikari.File('../AIFiles/' + ctx.options.aifile))
