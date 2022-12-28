@@ -45,8 +45,25 @@ async def upload(ctx: lightbulb.Context) -> None:
 
 
 @plugin.command
-@lightbulb.option("aifile", "Get the AI file you want from the list", choices=[f for f in listdir("../AIFiles") if isfile(join("../AIFiles", f))])
+@lightbulb.command('list', 'List all AI files available', )
+@lightbulb.implements(lightbulb.SlashCommand)
+async def request(ctx: lightbulb.Context) -> None:
+    filelist = listdir("../AIFiles")
+    number_of_file = 1
+    message = ""
+    for file in filelist:
+        message = message + str(number_of_file) + ". " + file + "\n"
+        number_of_file = number_of_file + 1
+    await ctx.respond(message, flags=hikari.MessageFlag.EPHEMERAL)
+
+
+@plugin.command
+@lightbulb.option("number", "Get the AI file you want from the list by giving its number", type=int, required=True)
 @lightbulb.command('request', 'Upload your AI file.')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def request(ctx: lightbulb.Context) -> None:
-    await ctx.respond(hikari.File('../AIFiles/' + ctx.options.aifile))
+    filelist = listdir("../AIFiles")
+    if ctx.options.number < 1 or ctx.options.number > len(filelist):
+        await ctx.respond('The file number you are asking for does not exist', flags=hikari.MessageFlag.EPHEMERAL)
+
+    await ctx.respond(hikari.File('../AIFiles/' + filelist[ctx.options.number - 1]))
