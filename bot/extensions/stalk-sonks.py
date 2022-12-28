@@ -12,7 +12,10 @@ def load(bot):
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def react_sonks(event: lightbulb.events) -> None:
-    if event.message.author == 293397054116331521:
+    if event.content.upper() is None:
+        return
+    # Checks if Sonks sent the message
+    if event.message.author.id == 293397054116331521:
         if random.random() < 0.06:
             print(f'Reacted to {event.message.author.username}s message')
             await event.message.add_reaction('🇰')
