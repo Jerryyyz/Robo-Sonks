@@ -12,7 +12,7 @@ def load(bot):
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def reply(event: lightbulb.events) -> None:
-    if not event.is_human or event.content.upper() is None:
+    if not event.is_human or event.content is None:
         return
     if get_message_reply():
         # if the message is ONLY the KCD characters reply with a message

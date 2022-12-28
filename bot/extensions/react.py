@@ -19,7 +19,7 @@ monkey_emojis = [hikari.Emoji.parse('<a:monke:1029393246218100876>'),
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def reply(event: lightbulb.events) -> None:
-    if not event.is_human or event.content.upper() is None:
+    if not event.is_human or event.content is None:
         return
 
     r = random.random()
