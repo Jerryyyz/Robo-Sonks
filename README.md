@@ -3,8 +3,8 @@ Discord bot for BBGC with the personality of Robo-Sonks
 	
 ## Technologies
 Project was created with:
-* hikari: 2.0.0.dev111
-* hikari-lightbulb: 2.2.4
+* hikari: 2.0.0.dev113
+* hikari-lightbulb: 2.3.1
 * aiohttp: 3.8.3
 
 ## How it works
