@@ -12,8 +12,9 @@ def load(bot):
 
 @plugin.listener(hikari.GuildMessageCreateEvent)
 async def react_sonks(event: lightbulb.events) -> None:
-    if event.content.upper() is None:
+    if not event.is_human or event.content is None:
         return
+
     # Checks if Sonks sent the message
     if event.message.author.id == 293397054116331521:
         if random.random() < 0.06:
