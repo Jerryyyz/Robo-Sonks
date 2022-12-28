@@ -13,8 +13,11 @@ Robo-Sonks can do the following:
 * **Reply** to messages that only include **6C** and **KCD** in a message with according messages
 * **kcd** command that gives you a world-renowned Sonks quote, either randomly or specified quote
 * **main-theme** command sends you Robo-Sonks' main theme
-* **shutthefuckup** toggle for the message replies
+* **shutthefuckup** toggle for the message replies (WIP)
 * **add-quote** is for the author to add quotes to the list
+* **list** to list the AI files stored for the BBCF AI
+* **upload** to upload an AI file
+* **request** to get a file that is stored
 * *Secret function...*
 
 ## Requirements
